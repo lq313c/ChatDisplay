@@ -1,16 +1,20 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule }    from '@angular/forms'; // <-- NgModel lives here
 
 
 import { AppComponent } from './app.component';
+import { ChatWindowComponent } from './chat-window/chat-window.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ChatWindowComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
