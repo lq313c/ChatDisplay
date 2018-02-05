@@ -51,6 +51,7 @@ h4 {
 .grid-pad {
     padding: 10px 0;
     overflow-y: auto;
+    max-width: 500px;
 }
 
 .grid-pad>[class*='col-']:last-of-type {
@@ -75,12 +76,12 @@ h4 {
 
 textarea {
     resize: none;
-    width: 410px;
+    width: 500px;
     height: 170px;
 }
 
 input.sendField {
-    width: 410px;
+    width: 500px;
 }
 
 .chatWindow {
