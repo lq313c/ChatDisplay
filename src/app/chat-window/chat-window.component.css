@@ -1,5 +1,3 @@
-/* Angular Tutorial CSS styles (modified)*/
-
 [class*='col-'] {
     float: left;
     padding-right: 20px;
@@ -8,7 +6,7 @@
 
 [class*='col-']:last-of-type {
     padding-right: 0;
-    padding-bottom: 20px;
+    padding-bottom: 5px;
 }
 
 a {
@@ -28,10 +26,6 @@ h3 {
 
 h4 {
     position: relative;
-}
-
-.grid {
-    margin: 0;
 }
 
 .col-1-4 {
@@ -56,6 +50,7 @@ h4 {
 
 .grid-pad {
     padding: 10px 0;
+    overflow-y: auto;
 }
 
 .grid-pad>[class*='col-']:last-of-type {
@@ -78,8 +73,6 @@ h4 {
     }
 }
 
-/*  Angular Tutorial CSS styles  (modified)  */
-
 textarea {
     resize: none;
     width: 410px;
@@ -91,5 +84,5 @@ input.sendField {
 }
 
 .chatWindow {
-    width: align-self auto;
+    padding-top: 0px;
 }
