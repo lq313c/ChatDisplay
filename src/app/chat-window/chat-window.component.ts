@@ -12,6 +12,7 @@ export class ChatWindowComponent implements OnInit {
   private outMessage: string;
   private chatHistory: string = "";
   private placeholder: string = "Type a message here";
+  private mySessionName: string = "Client XX";
   public clients: string[] = [];
 
 
@@ -41,15 +42,22 @@ export class ChatWindowComponent implements OnInit {
     return (data) => {
       console.log(data);
       switch (data.type) {
+
         case 'MESSAGE':
           this.log(`${data.sessionName}: ${data.message}`)
           break;
+
         case 'SESSION_LIST':
           this.clients = [];
           data.sessions.forEach(element => {
             this.clients.push(element.sessionName);
           });
           break;
+        
+        case 'SESSION':
+          this.mySessionName = data.sessionName;
+          break;
+
         default:
           console.log("Error: Message data type not recognized");
       }
