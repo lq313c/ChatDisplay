@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { WebsocketService } from '../websocket.service';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'app-chat-window',
@@ -12,11 +13,14 @@ export class ChatWindowComponent implements OnInit {
   private outMessage: string;
   private chatHistory: string = "";
   private placeholder: string = "Type a message here";
-  private mySessionName: string = "Client XX";
+  private mySessionName: string;
   public clients: string[] = [];
 
 
-  constructor(private wsService: WebsocketService) {
+  constructor(
+    private wsService: WebsocketService,
+    public dialog: MatDialog
+  ) {
     if (window.location.host.includes(":4200")) {
       // Local testing
       var webSocketUrl = 'ws://' + 'localhost:8080' + '/ChatService/websocket/chat';
@@ -53,7 +57,7 @@ export class ChatWindowComponent implements OnInit {
             this.clients.push(element.sessionName);
           });
           break;
-        
+
         case 'SESSION':
           this.mySessionName = data.sessionName;
           break;
@@ -83,7 +87,37 @@ export class ChatWindowComponent implements OnInit {
     this.chatHistory += text + '\n';
   }
 
+  // Change Name Dialog
+  openDialog(): void {
+    let dialogRef = this.dialog.open(ChangeNameDialog, {
+      width: '250px',
+      data: {name: this.mySessionName}
+    });
+
+    dialogRef.afterClosed().subscribe( result => {
+      result ? this.mySessionName = result: console.log("result undefined");
+    });
+  }
+
   ngOnInit() {
   }
 
+}
+
+@Component({
+  selector: 'change-name-dialog',
+  templateUrl: 'change-name-dialog.html'
+})
+export class ChangeNameDialog {
+  constructor(
+    public dialogRef: MatDialogRef<ChangeNameDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
+
+  onCancelClick(): void {
+    this.dialogRef.close();
+  }
+
+  onOkClick(): void {
+    this.dialogRef.close(this.data.newName);
+  }
 }
