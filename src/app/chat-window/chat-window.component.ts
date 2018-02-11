@@ -95,7 +95,11 @@ export class ChatWindowComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe( result => {
-      result ? this.mySessionName = result: console.log("result undefined");
+      // If result result not undefined, notify server to change session name
+      if (result) {
+        this.wsService.sendMessage( JSON.stringify({newSessionName: result}) );
+        // this.mySessionName = result;
+      }
     });
   }
 

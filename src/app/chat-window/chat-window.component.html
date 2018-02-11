@@ -1,5 +1,4 @@
-<h3>
-  Chat Patrons in channel</h3>
+<h3>Active chat clients</h3>
 <div class="grid-pad">
   <span *ngFor="let client of clients" class="col-1-4">
     <div class="clientIcon">{{client}}</div>
@@ -12,8 +11,7 @@
 
 
 <div>
-  <label>{{mySessionName}}</label>
-  <button mat-raised-button (click)="openDialog()">Change Name</button>
+  <button class="myClientName" mat-button (click)="openDialog()" matTooltip="Change your name!" matTooltipPosition="right">{{mySessionName}}</button>
 </div>
 <div>
   <span>

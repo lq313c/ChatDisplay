@@ -13,7 +13,8 @@ import {
 	MatProgressSpinnerModule,
 	MatButtonModule,
 	MatDialog,
-	MatDialogRef
+  MatDialogRef,
+  MatTooltipModule
 } from '@angular/material'; 
 
 @NgModule({
@@ -25,9 +26,11 @@ import {
   imports: [
     BrowserModule,
     FormsModule, 
+    MatButtonModule,
     MatInputModule,
     MatDialogModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatTooltipModule
   ],
   entryComponents: [ChatWindowComponent, ChangeNameDialog],
   providers: [],

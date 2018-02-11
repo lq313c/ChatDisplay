@@ -24,10 +24,6 @@ h3 {
     margin-bottom: 0;
 }
 
-h4 {
-    position: relative;
-}
-
 .col-1-4 {
     width: 25%;
 }
@@ -42,10 +38,10 @@ h4 {
     border-radius: 2px;
 }
 
-.clientIcon:hover {
-    background-color: #EEE;
-    cursor: default;
-    color: #607d8b;
+.myClientName {
+    text-align: left;
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
 .grid-pad {
@@ -87,3 +83,4 @@ input.sendField {
 .chatWindow {
     padding-top: 0px; padding-top: 0px;
 }
+
