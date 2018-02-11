@@ -1,3 +1,4 @@
+<!-- Show list of active chat participants -->
 <h3>Active chat clients</h3>
 <div class="grid-pad">
   <span *ngFor="let client of clients" class="col-1-4">
@@ -5,16 +6,19 @@
   </span>
 </div>
 
-<div class="chatWindow">
-  <textarea readonly>{{chatHistory}}</textarea>
+<!-- Chat console -->
+<div class="chatWindow" #scrollMe [scrollTop]="scrollMe.scrollHeight">
+  <p class="chatWindowText" *ngFor="let line of messageList">{{line}}</p>
 </div>
 
-
+<!-- Name Change -->
 <div>
   <button class="myClientName" mat-button (click)="openDialog()" matTooltip="Change your name!" matTooltipPosition="right">{{mySessionName}}</button>
 </div>
+
+<!-- Input area -->
 <div>
   <span>
-    <input class="sendField" type="text" [(ngModel)]="outMessage" placeholder={{placeholder}} (keydown.enter)="submit()">
+    <input matInput class="sendField" type="text" [(ngModel)]="outMessage" placeholder={{placeholder}} (keydown.enter)="submit()">
   </span>
 </div>

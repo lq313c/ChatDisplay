@@ -11,12 +11,11 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 export class ChatWindowComponent implements OnInit {
 
   private outMessage: string;
-  private chatHistory: string = "";
+  private messageList: string[] = [];
   private placeholder: string = "Type a message here";
   private mySessionName: string;
   public clients: string[] = [];
-
-
+  
   constructor(
     private wsService: WebsocketService,
     public dialog: MatDialog
@@ -84,7 +83,7 @@ export class ChatWindowComponent implements OnInit {
 
   // Print to the Chat message window
   private log(text: string) {
-    this.chatHistory += text + '\n';
+    this.messageList.push(text);
   }
 
   // Change Name Dialog
